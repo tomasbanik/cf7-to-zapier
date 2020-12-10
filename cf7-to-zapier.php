@@ -1,15 +1,15 @@
 <?php
 /**
  *
- * @package           Cf7_To_Zapier
+ * @package           Cf7_To_Integromat
  * @since             1.0.0
  *
  * Plugin Name:       CF7 to Webhook
- * Plugin URI:        https://github.com/Vizir/cf7-to-zapier
- * Description:       Use Contact Form 7 as a trigger to Zapier!
+ * Plugin URI:        https://github.com/tomasbanik/cf7-to-zapier
+ * Description:       Send data from Contact Form 7 to Integromat's webhook.
  * Version:           2.2.2
- * Author:            Mário Valney, Vizir Software Studio
- * Author URI:        http://vizir.com.br/en
+ * Author:            efef
+ * Author URI:        https://www.1-clicksetup.com/contact-form-7-integrated/
  * Text Domain:       cf7-to-webhook
  * Domain Path:       /languages
  *
