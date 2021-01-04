@@ -7,7 +7,7 @@
  * Plugin Name:       CF7 Redirections, Integrations and Database
  * Plugin URI:        https://github.com/tomasbanik/cf7-redirections-integrations-database
  * Description:       Send data from Contact Form 7 to Integromat's webhook module and integrate with other 600+ apps. Or use ready-made templates to connect with Hubspot, Pipedrive, Google Sheets, Zoho, ActiveCampaign, SMS gates, Mailchimp, Sendinblue.
- * Version:           2.2.2
+ * Version:           1.0.1
  * Author:            1-ClickSetup
  * Author URI:        https://www.1-clicksetup.com/contact-form-7-integrated/
  * Text Domain:       cf7-integrated
