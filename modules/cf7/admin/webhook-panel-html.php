@@ -1,15 +1,15 @@
 <?php
 
-// If this file is called directly, call the cops.
+
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 /**
  * $contactform is 'WPCF7_ContactForm' from 'CFTZ_Module_CF7::html_template_panel_html'
  */
 
-$activate = '0';
+$activate = '1';
 $hook_url = '';
-$send_mail = '0';
+$send_mail = '';
 $special_mail_tags = '';
 
 if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
@@ -34,15 +34,16 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
 
 ?>
 
-<h2>
-    <?php _e( 'Webhook', CFTZ_TEXTDOMAIN ) ?>
-</h2>
+<h1>
+    <?php _e( 'Integromat', CFTZ_TEXTDOMAIN ) ?>
+    <p></p>
+</h1
 
 <fieldset>
     <legend>
-        <?php _e( 'In these options you can activate or deactivate Webhook integration.', CFTZ_TEXTDOMAIN ); ?>
+        <?php _e( 'Step 1: <a href="https://www.integromat.com/en/apps/invite/e6d904e228dccd41a3712b2ebedc13b9?pc=matemplates" target="_blank">Start using a Module or select a template</a>', CFTZ_TEXTDOMAIN ); ?>
         <br>
-        <?php _e( 'To integrate you should insert your webhook URL below. For example, into Zapier you can create a trigger using "Webhooks" app and choose "Catch Hook" option.', CFTZ_TEXTDOMAIN ); ?>
+        <?php _e( 'Step 2: Copy&Paste the webhook created in the first step', CFTZ_TEXTDOMAIN ); ?>
     </legend>
 
     <table class="form-table">
@@ -50,14 +51,14 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
             <tr>
                 <th scope="row">
                     <label>
-                        <?php _e( 'Integrate', CFTZ_TEXTDOMAIN ) ?>
+                        <?php _e( 'Active?', CFTZ_TEXTDOMAIN ) ?>
                     </label>
                 </th>
                 <td>
                     <p>
                         <label for="ctz-webhook-activate">
                             <input type="checkbox" id="ctz-webhook-activate" name="ctz-webhook-activate" value="1" <?php checked( $activate, "1" ) ?>>
-                            <?php _e( 'Send to Webhook', CFTZ_TEXTDOMAIN ) ?>
+                            <?php _e( 'Yes. Send all data to Integromat', CFTZ_TEXTDOMAIN ) ?>
                         </label>
                     </p>
                 </td>
@@ -76,7 +77,7 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
                     </p>
                     <?php if ( $activate && empty( $hook_url ) ): ?>
                         <p class="description" style="color: #D00;">
-                            <?php _e( 'You should insert webhook URL here to finish configuration.' ); ?>
+                            <?php _e( 'Paste webhook URL from Watch New Form Submissions trigger here.' ); ?>
                         </p>
                     <?php endif; ?>
                 </td>
@@ -84,14 +85,14 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
             <tr>
                 <th scope="row">
                     <label>
-                        <?php _e( 'Send Mail', CFTZ_TEXTDOMAIN ) ?>
+                        <?php _e( 'Sending Mail?', CFTZ_TEXTDOMAIN ) ?>
                     </label>
                 </th>
                 <td>
                     <p>
                         <label for="ctz-webhook-send-mail">
                             <input type="checkbox" id="ctz-webhook-send-mail" name="ctz-webhook-send-mail" value="1" <?php checked( $send_mail, "1" ) ?>>
-                            <?php _e( 'Send CF7 mail as usually', CFTZ_TEXTDOMAIN ) ?>
+                            <?php _e( 'Yes', CFTZ_TEXTDOMAIN ) ?>
                         </label>
                     </p>
                 </td>
@@ -100,39 +101,7 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
     </table>
 </fieldset>
 
-<h2>
-    <?php _e( 'Special Mail Tags', CFTZ_TEXTDOMAIN ) ?>
-</h2>
 
-<fieldset>
-    <legend>
-        <?php echo _x( 'You can add <a href="https://contactform7.com/special-mail-tags/" target="_blank">Special Mail Tags</a> to the data sent to webhook.', 'The URL should point to CF7 documentation (someday it can be translated).', CFTZ_TEXTDOMAIN ); ?>
-    </legend>
-
-    <div style="margin: 20px 0;">
-        <label for="ctz-special-mail-tags">
-            <?php
-                $special_mail_tags = esc_textarea( $special_mail_tags );
-                $rows = ( (int) substr_count( $special_mail_tags, "\n" ) ) + 2;
-                $rows = max( $rows, 4 );
-            ?>
-            <textarea id="ctz-special-mail-tags" name="ctz-special-mail-tags" class="large-text code" rows="<?php echo $rows; ?>"><?php echo $special_mail_tags; ?></textarea>
-        </label>
-        <p class="description"><?php
-            printf(
-                __( 'Insert Special Tags like in mail body: %s', CFTZ_TEXTDOMAIN ),
-                '<span style="font-family: monospace; font-size: 12px; font-weight: bold;">[_post_title]</span>'
-            );
-
-            echo '<br>';
-
-            printf(
-                __( 'Or add a second word to pass as key to Webhook: %s', CFTZ_TEXTDOMAIN ),
-                '<span style="font-family: monospace; font-size: 12px; font-weight: bold;">[_post_title title]</span>'
-            );
-        ?></p>
-    </div>
-</fieldset>
 
 <h2>
     <?php _e( 'Data sent to Webhook', CFTZ_TEXTDOMAIN ) ?>
@@ -163,7 +132,7 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
     foreach ( $tags as $tag ) {
         if ( empty( $tag ) ) continue;
 
-        $sent_data[ $tag ] = '??????';
+        $sent_data[ $tag ] = 'xyz';
     }
 ?>
 
@@ -171,9 +140,3 @@ if ( is_a( $contactform, 'WPCF7_ContactForm' ) ) {
     echo json_encode( $sent_data, JSON_PRETTY_PRINT );
 ?></pre>
 
-<p class="description"><?php
-    printf(
-        __( 'You can add URL parameters into form using this shortcode: %s.', CFTZ_TEXTDOMAIN ),
-        '<span style="font-family: monospace; font-size: 12px; font-weight: bold;">[hidden example_get default:get]</span>'
-    );
-?></p>
