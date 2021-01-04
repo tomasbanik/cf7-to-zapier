@@ -2,23 +2,22 @@
 /**
  * CFTZ_Module_CF7
  *
- * @package         Cf7_To_Zapier
+ * @package         CF7_Integrated
  * @subpackage      CFTZ_Module_CF7
  * @since           1.0.0
  *
  */
 
-// If this file is called directly, call the cops.
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+defined( 'ABSPATH' );
 
 if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
     class CFTZ_Module_CF7 {
 
         /**
-         * The Core object
+         * The Core class
          *
          * @since    1.0.0
-         * @var      Cf7_To_Zapier    $core   The core class
+         * @var      CF7_Integrated   
          */
         private $core;
 
@@ -34,15 +33,15 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
          *
          * @since    1.0.0
          */
-        const METADATA = 'ctz_zapier';
+        const METADATA = 'ctz_integromat';
 
         /**
          * Define the core functionalities into plugin.
          *
          * @since    1.0.0
-         * @param    Cf7_To_Zapier      $core   The Core object
+         * @param    CF7_Integrated      $core   The Core object
          */
-        public function __construct( Cf7_To_Zapier $core ) {
+        public function __construct( CF7_Integrated $core ) {
             $this->core = $core;
         }
 
@@ -106,7 +105,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
          */
         public function wpcf7_editor_panels( $panels ) {
             $panels['webhook-panel'] = array(
-                'title'     => __( 'Webhook', CFTZ_TEXTDOMAIN ),
+                'title'     => __( 'Integrations', CFTZ_TEXTDOMAIN ),
                 'callback'  => [ $this, 'webhook_panel_html' ],
             );
 
@@ -114,7 +113,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         }
 
         /**
-         * Add zapier panel HTML
+         * Add integromat panel HTML
          *
          * @since    1.0.0
          * @param    WPCF7_ContactForm  $contactform    Current ContactForm Obj
@@ -168,9 +167,9 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         public function wpcf7_contact_form_properties( $properties, $instance ) {
             if ( ! isset( $properties[ self::METADATA ] ) ) {
                 $properties[ self::METADATA ] = array(
-                    'activate'          => '0',
+                    'activate'          => '1',
                     'hook_url'          => '',
-                    'send_mail'         => '0',
+                    'send_mail'         => '1',
                     'special_mail_tags' => '',
                 );
             }
@@ -188,7 +187,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         public function wpcf7_skip_mail( $skip_mail, $contact_form ) {
             $properties = $contact_form->prop( self::METADATA );
 
-            if ( $this->can_submit_to_zapier( $contact_form ) ) {
+            if ( $this->can_submit_integrated( $contact_form ) ) {
                 return empty( $properties['send_mail'] );
             }
 
@@ -196,7 +195,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         }
 
         /**
-         * Action 'wpcf7_mail_sent' to send data to Zapier
+         * Action 'wpcf7_mail_sent' to send data to Integromat
          *
          * @since    1.0.0
          * @param    obj                $contact_form   ContactForm Obj
@@ -204,7 +203,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         public function wpcf7_mail_sent( $contact_form ) {
             $properties = $contact_form->prop( self::METADATA );
 
-            if ( ! $this->can_submit_to_zapier( $contact_form ) ) {
+            if ( ! $this->can_submit_integrated( $contact_form ) ) {
                 return;
             }
 
@@ -219,7 +218,7 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
                  * Action: ctz_trigger_webhook
                  *
                  * You can add your own actions to process the hook.
-                 * We send it using CFTZ_Module_Zapier::pull_the_trigger().
+                 * We send it using CFTZ_Module_Integromat::pull_the_trigger().
                  *
                  * @since  1.0.0
                  */
@@ -391,12 +390,12 @@ if ( ! class_exists( 'CFTZ_Module_CF7' ) ) {
         }
 
         /**
-         * Check we can submit a form to Zapier
+         * Check we can submit a form to Integromat
          *
          * @since    1.0.0
          * @param    obj                $contact_form   ContactForm Obj
          */
-        private function can_submit_to_zapier( $contact_form ) {
+        private function can_submit_integrated( $contact_form ) {
             $properties = $contact_form->prop( self::METADATA );
 
             if ( empty( $properties ) || empty( $properties['activate'] ) || empty( $properties['hook_url'] ) ) {
