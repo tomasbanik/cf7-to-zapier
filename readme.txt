@@ -1,7 +1,7 @@
-=== CF7 to Webhook ===
-Contributors: mariovalney, vizir
-Donate link: https://github.com/Vizir/cf7-to-zapier
-Tags: cf7, contact form, zapier, integration, contact form 7, webhook, vizir, mariovalney
+=== CF7 Redirections, Integrations and Database ===
+Contributors: tomasbanik
+Donate link: https://github.com/tomasbanik/cf7-redirections-integrations-database
+Tags: cf7, contact form, integromat, integration, redirection, database, contact form 7, webhook
 Requires at least: 4.7
 Tested up to: 5.5
 Stable tag: trunk
@@ -9,48 +9,40 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Use Contact Form 7 as a trigger to any webhook like Zapier!
+Use Contact Form 7 as a trigger to other 600+ applications.
 
 == Description ==
 
-[Contact Form 7 (CF7)](https://wordpress.org/plugins/contact-form-7/ "Install it first, of course") is a awesome plugin used by 1+ million WordPress websites.
+[Contact Form 7 (CF7)](https://wordpress.org/plugins/contact-form-7/ "Install it first, of course") is a awesome plugin used by 5+ million WordPress websites.
 
 Webhooks are endpoint (urls) you can send data!
 
-Now you can join both: the best contact form plugin to WordPress and any webhook which receive JSON!
+[Integromat (Integromat)](https://www.integromat.com/?pc=matemplates) is a awesome service to connect your apps and automate workflows!
 
-And Zapier?
+Start with blank integration or use pre-defined templates.
 
-[Zapier (Zapier)](https://zapier.com) is a awesome service to connect your apps and automate workflows!
-
-Just activate and configure Zapier to receive data!
-
-Disclaimer: this plugin was created without any encouragement from Zapier or CF7 developers and any webhook/API service.
 
 = How to Use =
 
-Easily and quickly! Just activate "Contact Form 7" and "CF7 to Webhook" and configure a URL to send data (or go to Zapier to create your Zap).
+Activate "Contact Form 7" and "CF7 Redirections, Integrations and Database" plugins. Add new webhook and copy&pase it to "Integrations" tab.
 
 = Configuration =
 
-This is a example to integrate with Zapier:
+Follow these steps:
 
-1. Create a Zap.
-1. Choose your trigger as "Webhooks" app (Screenshot 2).
-1. Choose "Catch Hook" option (Screenshot 3).
-1. Done! Now insert the URL given (Screenshot 4) into your Contact Form configuration and activate integration.
+1. In Integromat, create a new scenario.
+2. Search for Contact Form 7 module.
+3. Choose a trigger as "Watch New Form Submissions".
+1. Add new webhook.
+1. Copy and insert the URL given into your Contact Form configuration and activate integration.
 
 = Creating your workflow =
 
-After configuration you can send one form to create a example data into Zapier dashboard. Then you can continue creating your workflow with filters and other apps.
-
-= Translations =
-
-You can [translate CF7 to Webhook](https://translate.wordpress.org/projects/wp-plugins/cf7-to-zapier) to your language.
+Click small "+" sign "Add another module" and continue creating your workflow with filters and other apps.
 
 = Review =
 
-We would be grateful for a [review here](https://wordpress.org/support/plugin/cf7-to-zapier/reviews/).
+We would be grateful for a [review here](https://wordpress.org/support/plugin/reviews/).
 
 = Support =
 
@@ -60,23 +52,17 @@ We would be grateful for a [review here](https://wordpress.org/support/plugin/cf
 
 `Install [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) and activate it.`
 
-* Install "CF7 to Webhook" by plugins dashboard.
+* Install "CF7 Redirections, Integrations and Database" by plugins dashboard.
 
 Or
 
-* Upload the entire `cf7-to-zapier` folder to the `/wp-content/plugins/` directory.
+* Upload the entire `cf7-redirections-integrations-database.zip` file to the `/wp-content/plugins/` directory.
 
 Then
 
 * Activate the plugin through the 'Plugins' menu in WordPress.
 
-You will find 'Zapier' tab into form configuration.
-
 == Frequently Asked Questions ==
-
-= Did you renamed the plugin? =
-
-Yes. Due to [this](https://make.wordpress.org/plugins/2019/08/08/trademark-enforcement/).
 
 = Does it works with Gutenberg? =
 
@@ -84,28 +70,19 @@ Yes. We support WordPress 5+ and CF7 too.
 
 = Does it works for forms sent out of CF7? =
 
-Nope. The intention here is to integrate CF7 to Zapier (and another webhooks).
+Nope. The intention here is to integrate CF7.
 
-= Can I use it without Zapier? =
+= Can I use it without Integromat? =
 
-Yep. We are creating a integration to Zapier webhook, but you can insert any URL to receive a JSON formated data.
+Yep. We are creating a integration to Integromat webhook, but you can insert any URL to receive a JSON formated data.
 
 = My sent data is empty =
 
-Please, go to [support forum](https://wordpress.org/support/plugin/cf7-to-zapier/) to get help.
-
-= Who are the developers? =
-
-* [Vizir](http://vizir.com.br/en) is a Brazilian software studio.
-* [Mário Valney](https://mariovalney.com/me) is a Brazilian developer who works at Vizir Software Studio and integrates the [WordPress community](https://profiles.wordpress.org/mariovalney).
-
-= How can I show webhook errors on form submit? =
-
-We already show WordPress request errors. If you want to add theatment to webhook errors, please [check this post](https://wordpress.org/support/topic/form-sent-to-zapier-randomly/#post-11249864).
+Please, send us an email to cf7integrated@1-clicksetup.com
 
 = How can I upload files and send link to webhook? =
 
-If you send a form with file, we will copy this to a directory before CF7 remove it and send the link to Zapier.
+If you send a form with file, we will copy this to a directory before CF7 remove it and send the link to Integromat.
 
 = How can I rename a field to webhook? =
 
@@ -121,16 +98,7 @@ We will replace the value for last option (which is the free_text input) with th
 
 This way your webhook will receive the free text value and other options if you allow it (like in checkbox).
 
-= Can I help you? =
-
-Yes! Visit [GitHub repository](https://github.com/Vizir/cf7-to-zapier).
-
 == Screenshots ==
-
-1. CF7 to Webhook configuration
-2. Zapier Step 1 - Choosing you app trigger
-3. Zapier Step 2 - Choosing Catch Hook option
-4. Zapier Step 3 - Webhook URL (waiting for first data)
 
 == Changelog ==
 
@@ -213,8 +181,6 @@ Props to @shoreline-chrism
 
 * It's alive!
 * Form configuration.
-* Integration to Zapier webhook.
-* Ignore or not CF7 mail sent.
 
 == Upgrade Notice ==
 
